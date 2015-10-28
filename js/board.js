@@ -7,6 +7,7 @@
   var Board = Game.Board = function(size){
     this.size = size || 4;
     this.newEmptyGrid();
+    this.addStartingTiles();
   };
 
   Board.prototype.newEmptyGrid = function(){
@@ -37,6 +38,17 @@
       random = this.randomPos();
     }
     return random;
+  };
+
+  Board.prototype.place = function(pos, tile){
+    this.grid[pos[0]][pos[1]] = tile;
+  };
+
+  Board.prototype.addStartingTiles = function(){
+    var first = new Game.Tile({ board: this });
+    var second = new Game.Tile({ board: this });
+    this.place(this.randomPos, first);
+    this.place(this.findEmpty, second);
   };
 
 }());
