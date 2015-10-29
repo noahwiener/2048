@@ -44,11 +44,18 @@
     this.grid[pos[0]][pos[1]] = tile;
   };
 
+  Board.prototype.clearSquare = function(pos){
+    this.grid[pos[0]][pos[1]] = null;
+  };
+
   Board.prototype.addStartingTiles = function(){
-    var first = new Game.Tile({ board: this });
-    var second = new Game.Tile({ board: this });
-    this.place(this.randomPos, first);
-    this.place(this.findEmpty, second);
+    var pos = this.randomPos();
+    var tile = new Game.Tile(this, pos);
+    this.place(pos, tile);
+    
+    pos = this.randomPos();
+    tile = new Game.Tile(this, pos);
+    this.place(pos, tile);
   };
 
 }());
