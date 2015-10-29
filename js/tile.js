@@ -20,13 +20,6 @@
     }
   };
 
-  Tile.DIRECTIONS = {
-  "Up": [0, -1],
-  "Down": [0, 1],
-  "Left": [-1, 0],
-  "Right": [1, 0]
-};
-
   Tile.prototype.addDirection = function(direction){
     return([[this.pos[0] + direction[0]], [this.pos[1] + direction[1]]]);
   };
@@ -39,17 +32,16 @@
         this.pos = newPos;
         newPos = this.addDirection(direction);
       }else if(!this.merged && this.equals(this.board.grid(newPos))){
-        var match = this.board.grid(newPos);
+        var match = this.board.grid[newPos[0]][newPos[1]];
         this.mergeInto(match);
         newPos = this.addDirection(direction);
       }
     }
-    this.board.place(this, this.pos);
+    this.board.place(this.pos, this);
     this.merged = false;
   };
 
   Tile.prototype.mergeInto = function(other){
-    // needs to add some logic so that once it merges, it doesn't merge again
     this.board.score += this.value;
     this.value += other.value;
     this.board.clearSquare(this.pos);
@@ -66,14 +58,29 @@
   };
 
   Tile.prototype.canBeMerged = function(){
+    var directions = [
+      [0, -1],
+      [0, 1],
+      [-1, 0],
+      [1, 0]
+    ];
+
     var testSquare;
-    for (var i = 0; i < 4; i++) {
-      testSquare = this.addDirection(Tile.Directions[i]);
+    for (var i = 0; i < directions.length; i++) {
+      testSquare = this.addDirection(directions[i]);
       if (this.equals(testSquare)){
         return true;
       }
     }
     return false;
+  };
+
+  Tile.prototype.klass = function(){
+    return("row_" + this.pos[0] + "_col_" + this.pos[1]);
+  };
+
+  Tile.prototype.resetClass = function(){
+    var klass = this.klass();
   };
 
 })();

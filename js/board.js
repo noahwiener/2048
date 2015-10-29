@@ -69,8 +69,8 @@
   Board.prototype.up = function(callback){
     for (var i = 0; i < this.size; i++) {
       for (var j = 0; j < this.size; j++) {
-        if (this.grid[pos[i]][pos[j]]) {
-          callback(this.grid[pos[i]][pos[j]]);
+        if (this.grid[i][j].value) {
+          (this.grid[i][j]).move([0, -1]);
         }
       }
     }
@@ -79,28 +79,28 @@
   Board.prototype.down = function(callback){
     for (var i = this.size - 1; i >= 0; i--) {
       for (var j = 0; j < this.size; j++) {
-        if (this.grid[pos[i]][pos[j]]) {
-          callback(this.grid[pos[i]][pos[j]]);
+        if (this.grid[i][j].value) {
+          (this.grid[i][j]).move([0, 1]);
         }
       }
     }
   };
 
-  Board.prototype.left = function(callback){
+  Board.prototype.left = function(){
     for (var i = 0; i < this.size; i++) {
       for (var j = 0; j < this.size; j++) {
-        if (this.grid[pos[j]][pos[i]]) {
-          callback(this.grid[pos[j]][pos[i]]);
+        if (this.grid[j][i].value) {
+          (this.grid[j][i]).move([0, -1]);
         }
       }
     }
   };
 
-  Board.prototype.right = function(callback){
+  Board.prototype.right = function(){
     for (var i = this.size - 1; i >= 0; i--) {
       for (var j = 0; j < this.size; j++) {
-        if (this.grid[pos[j]][pos[i]]) {
-          callback(this.grid[pos[j]][pos[i]]);
+        if (this.grid[j][i].value) {
+          (this.grid[j][i]).move([0, 1]);
         }
       }
     }
