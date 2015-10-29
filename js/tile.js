@@ -27,7 +27,6 @@
   Tile.prototype.move = function(direction){
     var newPos = this.addDirection(direction);
     while (this.board.isOnBoard(newPos)){
-      debugger;
       if (this.board.isEmptySquare(newPos)){
         this.board.clearSquare(this.pos);
         this.pos = newPos;
