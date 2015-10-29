@@ -9,6 +9,18 @@
     this.newEmptyGrid();
     this.addStartingTiles();
     this.score = 0;
+    this.moved = false;
+  };
+
+  Board.prototype.placeRandomTile = function(){
+    var pos = this.findEmpty();
+    var tile = new JSGame.Tile(this, pos);
+    this.place(pos, tile);
+  };
+
+  Board.prototype.addStartingTiles = function(){
+    this.placeRandomTile();
+    this.placeRandomTile();
   };
 
   Board.prototype.newEmptyGrid = function(){
@@ -57,22 +69,29 @@
   };
 
   Board.prototype.clearSquare = function(pos){
-    this.grid[pos[0]][pos[1]] = null;
+    this.grid[pos[0]][pos[1]] = [];
   };
 
-  Board.prototype.addStartingTiles = function(){
-    var pos = this.randomPos();
-    var tile = new JSGame.Tile(this, pos);
-    this.place(pos, tile);
-
-    pos = this.randomPos();
-    tile = new JSGame.Tile(this, pos);
-    this.place(pos, tile);
+  Board.prototype.handleInput = function(input){
+    switch (input) {
+      case "up":
+        this.up();
+        break;
+      case "down":
+        this.down();
+        break;
+      case "left":
+        this.left();
+        break;
+      case "right":
+        this.right();
+        break;
+    }
   };
 
-  Board.prototype.up = function(callback){
-    for (var i = 0; i < this.size; i++) {
-      for (var j = 0; j < this.size; j++) {
+  Board.prototype.left = function(){
+    for (var j = 1; j < this.size; j++) {
+      for (var i = 0; i < this.size; i++) {
         if (this.grid[i][j].value) {
           (this.grid[i][j]).move([0, -1]);
         }
@@ -80,9 +99,10 @@
     }
   };
 
-  Board.prototype.down = function(callback){
-    for (var i = this.size - 1; i >= 0; i--) {
-      for (var j = 0; j < this.size; j++) {
+
+  Board.prototype.right = function(){
+    for (var j = this.size - 2; j >= 0; j--) {
+      for (var i = 0; i < this.size; i++) {
         if (this.grid[i][j].value) {
           (this.grid[i][j]).move([0, 1]);
         }
@@ -90,21 +110,22 @@
     }
   };
 
-  Board.prototype.left = function(){
-    for (var i = 0; i < this.size; i++) {
+  Board.prototype.up = function(){
+    for (var i = 1; i < this.size; i++) {
       for (var j = 0; j < this.size; j++) {
-        if (this.grid[j][i].value) {
-          (this.grid[j][i]).move([0, -1]);
+        if (this.grid[i][j].value) {
+          (this.grid[i][j]).move([-1, 0]);
         }
       }
     }
   };
 
-  Board.prototype.right = function(){
-    for (var i = this.size - 1; i >= 0; i--) {
+  Board.prototype.down = function(){
+    for (var i = this.size - 2; i >= 0; i--) {
       for (var j = 0; j < this.size; j++) {
-        if (this.grid[j][i].value) {
-          (this.grid[j][i]).move([0, 1]);
+        if (this.grid[i][j].value) {
+          debugger;
+          (this.grid[i][j]).move([1, 0]);
         }
       }
     }

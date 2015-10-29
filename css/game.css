@@ -1,0 +1,24 @@
+figure {
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  margin-left: -225px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background-color: cornflowerblue;
+  border-radius: 3px solid black;
+  text-align: center;
+  line-height: 100px;
+  font-weight: bold;
+  font-size: 55px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}

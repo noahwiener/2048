@@ -31,10 +31,14 @@
         this.board.clearSquare(this.pos);
         this.pos = newPos;
         newPos = this.addDirection(direction);
+        this.board.moved = true;
       }else if(!this.merged && this.equals(this.board.grid[newPos[0]][newPos[1]])){
         var match = this.board.grid[newPos[0]][newPos[1]];
         this.mergeInto(match);
         newPos = this.addDirection(direction);
+        this.board.moved = true;
+      }else{
+        newPos = [newPos[0] + direction[0], newPos[1] + direction[1]];
       }
     }
     this.board.place(this.pos, this);
@@ -75,12 +79,5 @@
     return false;
   };
 
-  Tile.prototype.klass = function(){
-    return("row_" + this.pos[0] + "_col_" + this.pos[1]);
-  };
-
-  Tile.prototype.resetClass = function(){
-    var klass = this.klass();
-  };
 
 })();
