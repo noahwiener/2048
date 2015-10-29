@@ -21,8 +21,15 @@
     }
   };
 
+  Board.prototype.isOnBoard = function (pos){
+    if(pos[0] > 0 && pos[0] < this.size && pos[1] > 0 && pos[1] < this.size){
+      return true;
+    }else{
+      return false;
+    }
+  };
+
   Board.prototype.isEmptySquare = function(pos){
-    // find if position contains tile (truthy) or null, return opposite boolean
     return !this.grid[pos[0]][pos[1]];
   };
 
@@ -52,7 +59,7 @@
     var pos = this.randomPos();
     var tile = new Game.Tile(this, pos);
     this.place(pos, tile);
-    
+
     pos = this.randomPos();
     tile = new Game.Tile(this, pos);
     this.place(pos, tile);
