@@ -1,10 +1,10 @@
 (function() {
   'use strict';
-  if (typeof Game === 'undefined'){
-    window.Game = {};
+  if (typeof JSGame === 'undefined'){
+    window.JSGame = {};
   }
 
-  var Board = Game.Board = function(size){
+  var Board = JSGame.Board = function(size){
     this.size = size || 4;
     this.newEmptyGrid();
     this.addStartingTiles();
@@ -58,11 +58,11 @@
 
   Board.prototype.addStartingTiles = function(){
     var pos = this.randomPos();
-    var tile = new Game.Tile(this, pos);
+    var tile = new JSGame.Tile(this, pos);
     this.place(pos, tile);
 
     pos = this.randomPos();
-    tile = new Game.Tile(this, pos);
+    tile = new JSGame.Tile(this, pos);
     this.place(pos, tile);
   };
 

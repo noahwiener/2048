@@ -1,10 +1,10 @@
 (function() {
   'use strict';
-  if (typeof Game === 'undefined'){
-    window.Game = {};
+  if (typeof JSGame === 'undefined'){
+    window.JSGame = {};
   }
 
-  var Tile = Game.Tile = function(board, pos, value){
+  var Tile = JSGame.Tile = function(board, pos, value){
     this.board = board;
     this.pos = pos || board.findEmpty();
     this.value = value || this.assignValue();
