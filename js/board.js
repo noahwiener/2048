@@ -23,7 +23,7 @@
   };
 
   Board.prototype.isOnBoard = function (pos){
-    if(pos[0] > 0 && pos[0] < this.size && pos[1] > 0 && pos[1] < this.size){
+    if(pos[0] >= 0 && pos[0] < this.size && pos[1] >= 0 && pos[1] < this.size){
       return true;
     }else{
       return false;
@@ -31,7 +31,11 @@
   };
 
   Board.prototype.isEmptySquare = function(pos){
-    return !this.grid[pos[0]][pos[1]];
+    if(this.grid[pos[0]][pos[1]].value){
+      return false;
+    }else{
+      return true;
+    }
   };
 
   Board.prototype.randomPos = function(){

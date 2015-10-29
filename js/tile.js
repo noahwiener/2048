@@ -21,17 +21,18 @@
   };
 
   Tile.prototype.addDirection = function(direction){
-    return([[this.pos[0] + direction[0]], [this.pos[1] + direction[1]]]);
+    return([this.pos[0] + direction[0], this.pos[1] + direction[1]]);
   };
 
   Tile.prototype.move = function(direction){
     var newPos = this.addDirection(direction);
     while (this.board.isOnBoard(newPos)){
+      debugger;
       if (this.board.isEmptySquare(newPos)){
         this.board.clearSquare(this.pos);
         this.pos = newPos;
         newPos = this.addDirection(direction);
-      }else if(!this.merged && this.equals(this.board.grid(newPos))){
+      }else if(!this.merged && this.equals(this.board.grid[newPos[0]][newPos[1]])){
         var match = this.board.grid[newPos[0]][newPos[1]];
         this.mergeInto(match);
         newPos = this.addDirection(direction);
