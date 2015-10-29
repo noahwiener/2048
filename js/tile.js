@@ -8,6 +8,7 @@
     this.board = board;
     this.pos = pos || board.findEmpty();
     this.value = value || this.assignValue();
+    this.merged = false;
   };
 
   Tile.prototype.assignValue = function(){
@@ -30,23 +31,29 @@
     return([[this.pos[0] + direction[0]], [this.pos[1] + direction[1]]]);
   };
 
-  Tile.prototype.moveStep = function(direction){
+  Tile.prototype.move = function(direction){
     var newPos = this.addDirection(direction);
-    if (this.board.isOnBoard(newPos)){
+    while (this.board.isOnBoard(newPos)){
       if (this.board.isEmptySquare(newPos)){
         this.board.clearSquare(this.pos);
         this.pos = newPos;
-        this.board.place(this, this.pos);
-      }else if(this.equals(this.board.grid(newPos))){
+        newPos = this.addDirection(direction);
+      }else if(!this.merged && this.equals(this.board.grid(newPos))){
         var match = this.board.grid(newPos);
         this.mergeInto(match);
+        newPos = this.addDirection(direction);
       }
     }
+    this.board.place(this, this.pos);
+    this.merged = false;
   };
 
   Tile.prototype.mergeInto = function(other){
-    other.value += this.value;
+    // needs to add some logic so that once it merges, it doesn't merge again
+    this.value += other.value;
     this.board.clearSquare(this.pos);
+    this.pos = other.pos;
+    this.merged = true;
   };
 
   Tile.prototype.addToBoard = function(){
