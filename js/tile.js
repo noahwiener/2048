@@ -50,6 +50,7 @@
 
   Tile.prototype.mergeInto = function(other){
     // needs to add some logic so that once it merges, it doesn't merge again
+    this.board.score += this.value;
     this.value += other.value;
     this.board.clearSquare(this.pos);
     this.pos = other.pos;

@@ -8,6 +8,7 @@
     this.size = size || 4;
     this.newEmptyGrid();
     this.addStartingTiles();
+    this.score = 0;
   };
 
   Board.prototype.newEmptyGrid = function(){
@@ -65,4 +66,43 @@
     this.place(pos, tile);
   };
 
+  Board.prototype.up = function(callback){
+    for (var i = 0; i < this.size; i++) {
+      for (var j = 0; j < this.size; j++) {
+        if (this.grid[pos[i]][pos[j]]) {
+          callback(this.grid[pos[i]][pos[j]]);
+        }
+      }
+    }
+  };
+
+  Board.prototype.down = function(callback){
+    for (var i = this.size - 1; i >= 0; i--) {
+      for (var j = 0; j < this.size; j++) {
+        if (this.grid[pos[i]][pos[j]]) {
+          callback(this.grid[pos[i]][pos[j]]);
+        }
+      }
+    }
+  };
+
+  Board.prototype.left = function(callback){
+    for (var i = 0; i < this.size; i++) {
+      for (var j = 0; j < this.size; j++) {
+        if (this.grid[pos[j]][pos[i]]) {
+          callback(this.grid[pos[j]][pos[i]]);
+        }
+      }
+    }
+  };
+
+  Board.prototype.right = function(callback){
+    for (var i = this.size - 1; i >= 0; i--) {
+      for (var j = 0; j < this.size; j++) {
+        if (this.grid[pos[j]][pos[i]]) {
+          callback(this.grid[pos[j]][pos[i]]);
+        }
+      }
+    }
+  };
 }());
