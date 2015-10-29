@@ -4,7 +4,7 @@
     window.Game = {};
   }
 
-  var Tile = function(board, pos, value){
+  var Tile = Game.Tile = function(board, pos, value){
     this.board = board;
     this.pos = pos || board.findEmpty();
     this.value = value || this.assignValue();
@@ -12,8 +12,8 @@
   };
 
   Tile.prototype.assignValue = function(){
-    rand = Math.random();
-    if (rand > 0.8){
+    var rand = Math.random();
+    if (rand < 0.8){
       return 2;
     }else{
       return 4;
@@ -74,6 +74,5 @@
     }
     return false;
   };
-
 
 })();

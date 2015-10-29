@@ -4,5 +4,9 @@
     window.Game = {};
   }
 
-  
+  var View = Game.View = function(){
+    return "hi";
+  };
+
+
 }());
