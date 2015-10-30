@@ -19,12 +19,11 @@
     <script src="js/board.js"></script>
     <script src="js/tile.js"></script>
 
-    <h1 id="test">no swipe yet</h1>
 
     <script>
     $(function() {
       //Enable swiping...
-      $("#test").swipe( {
+      $(".game").swipe( {
         //Generic swipe handler for all directions
         swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
           $(this).text("You swiped " + direction );
