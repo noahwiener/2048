@@ -9,10 +9,10 @@
     this.board = new JSGame.Board();
     this.setupGrid();
     $(window).on("keydown", this.handleKeyPress.bind(this));
-    $(window).on("swipeLeft", this.handleSwipeLeft.bind(this));
-    $(window).on("swipeRight", this.handleSwipeRight.bind(this));
-    $(window).on("swipeUp", this.handleSwipeUp.bind(this));
-    $(window).on("swipeDown", this.handleSwipeDown.bind(this));
+    $(".game").on("swipeLeft", this.handleSwipeLeft.bind(this));
+    $(".game").on("swipeRight", this.handleSwipeRight.bind(this));
+    $(".game").on("swipeUp", this.handleSwipeUp.bind(this));
+    $(".game").on("swipeDown", this.handleSwipeDown.bind(this));
 
   };
 
