@@ -4,8 +4,7 @@
     window.JSGame = {};
   }
 
-  var Board = JSGame.Board = function(size){
-    this.size = size || 4;
+  var Board = JSGame.Board = function(){
     this.newEmptyGrid();
     this.addStartingTiles();
     this.score = 0;
@@ -17,7 +16,8 @@
   Board.prototype.placeRandomTile = function(){
     var pos = this.findEmpty();
     var tile = new JSGame.Tile(this, pos);
-    this.place(pos, tile);
+    tile.render();
+    this.addTile(pos, tile);
   };
 
   Board.prototype.addStartingTiles = function(){
@@ -27,9 +27,9 @@
 
   Board.prototype.newEmptyGrid = function(){
     this.grid = [];
-    for (var i = 0; i < this.size; i++) {
+    for (var i = 0; i < 4; i++) {
       var row = [];
-      for (var j = 0; j < this.size; j++) {
+      for (var j = 0; j < 4; j++) {
         row.push([]);
       }
       this.grid.push(row);
@@ -37,7 +37,7 @@
   };
 
   Board.prototype.isOnBoard = function (pos){
-    if(pos[0] >= 0 && pos[0] < this.size && pos[1] >= 0 && pos[1] < this.size){
+    if(pos[0] >= 0 && pos[0] < 4 && pos[1] >= 0 && pos[1] < 4){
       return true;
     }else{
       return false;
@@ -53,8 +53,8 @@
   };
 
   Board.prototype.randomPos = function(){
-    var row = Math.floor(Math.random() * this.size);
-    var col =  Math.floor(Math.random() * this.size);
+    var row = Math.floor(Math.random() * 4);
+    var col =  Math.floor(Math.random() * 4);
     return [row, col];
   };
 
@@ -66,7 +66,7 @@
     return random;
   };
 
-  Board.prototype.place = function(pos, tile){
+  Board.prototype.addTile = function(pos, tile){
     this.grid[pos[0]][pos[1]] = tile;
   };
 
@@ -92,8 +92,8 @@
   };
 
   Board.prototype.left = function(){
-    for (var j = 1; j < this.size; j++) {
-      for (var i = 0; i < this.size; i++) {
+    for (var j = 1; j < 4; j++) {
+      for (var i = 0; i < 4; i++) {
         if (this.grid[i][j].value) {
           (this.grid[i][j]).move([0, -1]);
         }
@@ -103,8 +103,8 @@
 
 
   Board.prototype.right = function(){
-    for (var j = this.size - 2; j >= 0; j--) {
-      for (var i = 0; i < this.size; i++) {
+    for (var j = 2; j >= 0; j--) {
+      for (var i = 0; i < 4; i++) {
         if (this.grid[i][j].value) {
           (this.grid[i][j]).move([0, 1]);
         }
@@ -113,8 +113,8 @@
   };
 
   Board.prototype.up = function(){
-    for (var i = 1; i < this.size; i++) {
-      for (var j = 0; j < this.size; j++) {
+    for (var i = 1; i < 4; i++) {
+      for (var j = 0; j < 4; j++) {
         if (this.grid[i][j].value) {
           (this.grid[i][j]).move([-1, 0]);
         }
@@ -123,8 +123,8 @@
   };
 
   Board.prototype.down = function(){
-    for (var i = this.size - 2; i >= 0; i--) {
-      for (var j = 0; j < this.size; j++) {
+    for (var i = 2; i >= 0; i--) {
+      for (var j = 0; j < 4; j++) {
         if (this.grid[i][j].value) {
           (this.grid[i][j]).move([1, 0]);
         }

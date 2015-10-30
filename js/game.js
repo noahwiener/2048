@@ -8,26 +8,27 @@
     this.$el = $el;
     this.board = new JSGame.Board();
     this.setupGrid();
-    $(window).on("keydown", this.handleKeyEvent.bind(this));
+    $(window).on("keydown", this.handleKeyPress.bind(this));
   };
 
 
-  Game.prototype.setupGrid = function () {
-    var html = "<div>score: " + this.board.score + "</div>";
-
-    for (var i = 0; i < this.board.size; i++) {
-      html += "<ul>";
-      for (var j = 0; j < this.board.size; j++) {
-        var value = "";
-        if (this.board.grid[i][j].value){
-          value = this.board.grid[i][j].value;
+  Game.prototype.setupGrid = function() {
+    var html = $("<div class='board'></div>");
+    for (var i = 0; i < 4; i++) {
+      for (var j = 0; j < 4; j++) {
+        html.append("<div class='grid-square'></div>");
+        var square = this.board.grid[i][j];
+        if (square.value) {
+          var tileDisplay = $("<div></div>");
+          tileDisplay.addClass(square.klass());
+          square.$el = tileDisplay;
+          html.append(tileDisplay);
         }
-        html += "<li class=value_" + value + ">" + value + "</li>";
       }
-      html += "</ul>";
     }
     this.$el.html(html);
   };
+
 
   Game.KEYS = {
     38: "up",
@@ -36,19 +37,24 @@
     37: "left"
   };
 
-  Game.prototype.handleKeyEvent = function (event) {
+  Game.prototype.handleKeyPress = function (event) {
     if (Game.KEYS[event.keyCode]) {
       var direction = Game.KEYS[event.keyCode];
       this.board.handleInput(direction);
       if (this.board.moved){
         this.board.placeRandomTile();
+        this.setScore();
         this.board.moved = false;
-        if (this.board.won){
+        if (this.board.over){
           alert("you win");
+          this.board.won = false;
         }
       }
-      this.setupGrid();
     }
+  };
+
+  Game.prototype.setScore = function(){
+    $(".score").html("Score:" + " " + this.board.score);
   };
 
 

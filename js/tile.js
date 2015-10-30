@@ -7,11 +7,11 @@
   var Tile = JSGame.Tile = function(board, pos, value){
     this.board = board;
     this.pos = pos || board.findEmpty();
-    this.value = value || this.assignValue();
+    this.value = value || this.assignStartingValue();
     this.merged = false;
   };
 
-  Tile.prototype.assignValue = function(){
+  Tile.prototype.assignStartingValue = function(){
     var rand = Math.random();
     if (rand < 0.8){
       return 2;
@@ -31,16 +31,17 @@
         this.board.clearSquare(this.pos);
         this.pos = newPos;
         this.board.moved = true;
-      }else if(!this.merged && this.equals(this.board.grid[newPos[0]][newPos[1]])){
+      }else if(!this.merged && this.match(this.board.grid[newPos[0]][newPos[1]])){
         var match = this.board.grid[newPos[0]][newPos[1]];
         this.mergeInto(match);
         this.board.moved = true;
-      }else if (!this.equals(this.board.grid[newPos[0]][newPos[1]])){
+      }else if (!this.match(this.board.grid[newPos[0]][newPos[1]])){
         break;
       }
       newPos = [newPos[0] + direction[0], newPos[1] + direction[1]];
     }
-    this.board.place(this.pos, this);
+    this.resetKlass();
+    this.board.addTile(this.pos, this);
     this.merged = false;
   };
 
@@ -51,17 +52,16 @@
       this.board.won = true;
     }
     this.board.clearSquare(this.pos);
+    other.$el.removeClass();
+    other.$el.remove();
     this.pos = other.pos;
     this.merged = true;
   };
 
-  Tile.prototype.addToBoard = function(){
-    this.board.place(this.pos, this);
-  };
-
-  Tile.prototype.equals = function(other) {
+  Tile.prototype.match = function(other) {
     return this.value === other.value;
   };
+
 
   Tile.prototype.canBeMerged = function(){
     var directions = [
@@ -73,12 +73,30 @@
 
     var testSquare;
     for (var i = 0; i < directions.length; i++) {
-      testSquare = this.addDirection(directions[i]);
-      if (this.equals(testSquare)){
+      testSquare = this.board.grid(this.addDirection(directions[i]));
+      if (this.match(testSquare)){
         return true;
       }
     }
     return false;
+  };
+
+  Tile.prototype.render = function(){
+    var klass = this.klass();
+    var display = $("<div class=" + klass + "></div>");
+    $(".game div").eq(0).append(display);
+    this.$el = display;
+  };
+
+  Tile.prototype.klass = function(){
+    var klass = "tile tile_" + this.pos[0] + this.pos[1];
+    klass += " value_" + this.value;
+    return klass;
+  };
+
+  Tile.prototype.resetKlass = function(){
+    this.$el.removeClass();
+    this.$el.addClass(this.klass());
   };
 
 
