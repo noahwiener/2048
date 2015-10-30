@@ -9,10 +9,59 @@
     this.board = new JSGame.Board();
     this.setupGrid();
     $(window).on("keydown", this.handleKeyPress.bind(this));
-    $(window).on("swipe", this.handleSwipe.bind(this));
+    $(window).on("swipeLeft", this.handleSwipeLeft.bind(this));
+    $(window).on("swipeRight", this.handleSwipeRight.bind(this));
+    $(window).on("swipeUp", this.handleSwipeUp.bind(this));
+    $(window).on("swipeDown", this.handleSwipeDown.bind(this));
+
   };
 
+  Game.prototype.handleSwipeLeft = function (event){
+    console.log("test");
+    this.update("left");
+  };
 
+  Game.prototype.handleSwipeUp = function (event){
+    console.log("test");
+    this.update("up");
+  };
+
+  Game.prototype.handleSwipeDown = function (event){
+    console.log("test");
+    this.update("down");
+  };
+
+  Game.prototype.handleSwipeRight = function (event){
+    console.log("test");
+    this.update("right");
+  };
+
+  Game.KEYS = {
+    38: "up",
+    39: "right",
+    40: "down",
+    37: "left"
+  };
+
+  Game.prototype.handleKeyPress = function (event) {
+    if (Game.KEYS[event.keyCode]) {
+      var direction = Game.KEYS[event.keyCode];
+      this.update(direction);
+    }
+  };
+
+  Game.prototype.update = function (direction){
+      this.board.handleInput(direction);
+      if (this.board.moved){
+        this.board.placeRandomTile();
+        this.setScore();
+        this.board.moved = false;
+        if (this.board.over){
+          alert("you win");
+          this.board.won = false;
+        }
+      }
+  };
 
 
   Game.prototype.setupGrid = function() {
@@ -32,33 +81,6 @@
     this.$el.html(html);
   };
 
-
-  Game.KEYS = {
-    38: "up",
-    39: "right",
-    40: "down",
-    37: "left"
-  };
-
-  Game.prototype.handleSwipe = function(event){
-    console.log("awesome");
-  };
-
-  Game.prototype.handleKeyPress = function (event) {
-    if (Game.KEYS[event.keyCode]) {
-      var direction = Game.KEYS[event.keyCode];
-      this.board.handleInput(direction);
-      if (this.board.moved){
-        this.board.placeRandomTile();
-        this.setScore();
-        this.board.moved = false;
-        if (this.board.over){
-          alert("you win");
-          this.board.won = false;
-        }
-      }
-    }
-  };
 
   Game.prototype.setScore = function(){
     $(".score").html("Score:" + " " + this.board.score);

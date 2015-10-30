@@ -19,6 +19,20 @@
     <script src="js/board.js"></script>
     <script src="js/tile.js"></script>
 
+
+    <script>
+    $(function() {
+      //Enable swiping...
+      $(window).swipe( {
+        //Generic swipe handler for all directions
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+         threshold:0
+      });
+    });
+    </script>
+
     <script>
       $(function () {
         new JSGame.Game($(".game"));
