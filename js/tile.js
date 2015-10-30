@@ -52,7 +52,6 @@
       this.board.won = true;
     }
     this.board.clearSquare(this.pos);
-    other.$el.removeClass();
     other.$el.remove();
     this.pos = other.pos;
     this.merged = true;
@@ -83,7 +82,8 @@
 
   Tile.prototype.render = function(){
     var klass = this.klass();
-    var display = $("<div class=" + klass + "></div>");
+    var display = $("<div></div>");
+    display.addClass(klass);
     $(".game div").eq(0).append(display);
     this.$el = display;
   };
