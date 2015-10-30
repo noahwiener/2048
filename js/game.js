@@ -37,6 +37,7 @@
     37: "left"
   };
 
+
   Game.prototype.handleKeyPress = function (event) {
     if (Game.KEYS[event.keyCode]) {
       var direction = Game.KEYS[event.keyCode];
