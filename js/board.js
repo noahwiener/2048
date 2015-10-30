@@ -124,7 +124,6 @@
     for (var i = this.size - 2; i >= 0; i--) {
       for (var j = 0; j < this.size; j++) {
         if (this.grid[i][j].value) {
-          debugger;
           (this.grid[i][j]).move([1, 0]);
         }
       }

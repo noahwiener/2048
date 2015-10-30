@@ -30,16 +30,15 @@
       if (this.board.isEmptySquare(newPos)){
         this.board.clearSquare(this.pos);
         this.pos = newPos;
-        newPos = this.addDirection(direction);
         this.board.moved = true;
       }else if(!this.merged && this.equals(this.board.grid[newPos[0]][newPos[1]])){
         var match = this.board.grid[newPos[0]][newPos[1]];
         this.mergeInto(match);
-        newPos = this.addDirection(direction);
         this.board.moved = true;
-      }else{
-        newPos = [newPos[0] + direction[0], newPos[1] + direction[1]];
+      }else if (!this.merged && !this.equals(this.board.grid[newPos[0]][newPos[1]])){
+        break;
       }
+      newPos = [newPos[0] + direction[0], newPos[1] + direction[1]];
     }
     this.board.place(this.pos, this);
     this.merged = false;
