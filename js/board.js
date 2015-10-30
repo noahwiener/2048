@@ -10,6 +10,8 @@
     this.addStartingTiles();
     this.score = 0;
     this.moved = false;
+    this.won = false;
+    this.lost = false;
   };
 
   Board.prototype.placeRandomTile = function(){

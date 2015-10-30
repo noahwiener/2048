@@ -35,7 +35,7 @@
         var match = this.board.grid[newPos[0]][newPos[1]];
         this.mergeInto(match);
         this.board.moved = true;
-      }else if (!this.merged && !this.equals(this.board.grid[newPos[0]][newPos[1]])){
+      }else if (!this.equals(this.board.grid[newPos[0]][newPos[1]])){
         break;
       }
       newPos = [newPos[0] + direction[0], newPos[1] + direction[1]];
@@ -47,6 +47,9 @@
   Tile.prototype.mergeInto = function(other){
     this.board.score += this.value;
     this.value += other.value;
+    if (this.value === 2048){
+      this.board.won = true;
+    }
     this.board.clearSquare(this.pos);
     this.pos = other.pos;
     this.merged = true;

@@ -13,7 +13,7 @@
 
 
   Game.prototype.setupGrid = function () {
-    var html = "";
+    var html = "<div>score: " + this.board.score + "</div>";
 
     for (var i = 0; i < this.board.size; i++) {
       html += "<ul>";
@@ -43,6 +43,9 @@
       if (this.board.moved){
         this.board.placeRandomTile();
         this.board.moved = false;
+        if (this.board.won){
+          alert("you win");
+        }
       }
       this.setupGrid();
     }

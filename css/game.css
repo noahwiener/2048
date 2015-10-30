@@ -14,7 +14,7 @@ li {
   width: 100px;
   height: 100px;
   background-color: cornflowerblue;
-  border-radius: 3px solid black;
+  border: 3px solid black;
   text-align: center;
   line-height: 100px;
   font-weight: bold;
