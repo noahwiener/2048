@@ -9,7 +9,10 @@
     this.board = new JSGame.Board();
     this.setupGrid();
     $(window).on("keydown", this.handleKeyPress.bind(this));
+    $(window).on("swipe", this.handleKeyPress.bind(this));
   };
+
+
 
 
   Game.prototype.setupGrid = function() {
@@ -38,6 +41,7 @@
   };
 
 
+
   Game.prototype.handleKeyPress = function (event) {
     if (Game.KEYS[event.keyCode]) {
       var direction = Game.KEYS[event.keyCode];
@@ -52,6 +56,10 @@
         }
       }
     }
+
+  else if (event === "swipeLeft"){
+    console.log("this worked");
+  }
   };
 
   Game.prototype.setScore = function(){
