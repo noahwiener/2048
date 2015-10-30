@@ -10,26 +10,26 @@ figure {
 }
 
 .board {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
 }
 
 .grid-square {
-  height: 100px;
-  width: 100px;
+  height: 125px;
+  width: 125px;
   float: left;
   border: 1px solid black;
   box-sizing: border-box;
 }
 
 .tile {
-  height: 98px;
-  width: 98px;
+  height: 123px;
+  width: 123px;
   margin: 1px;
   color: red;
   float: left;
   position: absolute;
-  line-height: 100px;
+  line-height: 125px;
   font-weight: bold;
   font-size: 55px;
   text-align: center;
@@ -122,76 +122,76 @@ figure {
 }
 
 .tile_01{
-  left: 100px;
+  left: 125px;
   top: 0px;
 }
 
 .tile_02{
-  left: 200px;
+  left: 250px;
   top: 0px;
 }
 
 .tile_03{
-  left: 300px;
+  left: 375px;
   top: 0px;
 }
 
  .tile_10{
   left: 0px;
-  top: 100px;
+  top: 125px;
 }
 
 .tile_11{
-  left: 100px;
-  top: 100px;
+  left: 125px;
+  top: 125px;
 }
 
 .tile_12{
-  left: 200px;
-  top: 100px;
+  left: 250px;
+  top: 125px;
 }
 
 .tile_13{
-  left: 300px;
-  top: 100px;
+  left: 375px;
+  top: 125px;
 }
 
 .tile_20{
  left: 0px;
- top: 200px;
+ top: 250px;
 }
 
 .tile_21{
- left: 100px;
- top: 200px;
+ left: 125px;
+ top: 250px;
 }
 
 .tile_22{
- left: 200px;
- top: 200px;
+ left: 250px;
+ top: 250px;
 }
 
 .tile_23{
- left: 300px;
- top: 200px;
+ left: 375px;
+ top: 250px;
 }
 
 .tile_30{
  left: 0px;
- top: 300px;
+ top: 375px;
 }
 
 .tile_31{
- left: 100px;
- top: 300px;
+ left: 125px;
+ top: 375px;
 }
 
 .tile_32{
- left: 200px;
- top: 300px;
+ left: 250px;
+ top: 375px;
 }
 
 .tile_33{
- left: 300px;
- top: 300px;
+ left: 375px;
+ top: 375px;
 }

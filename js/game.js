@@ -17,22 +17,18 @@
   };
 
   Game.prototype.handleSwipeLeft = function (event){
-    console.log("test");
     this.update("left");
   };
 
   Game.prototype.handleSwipeUp = function (event){
-    console.log("test");
     this.update("up");
   };
 
   Game.prototype.handleSwipeDown = function (event){
-    console.log("test");
     this.update("down");
   };
 
   Game.prototype.handleSwipeRight = function (event){
-    console.log("test");
     this.update("right");
   };
 
