@@ -31,7 +31,7 @@
         this.board.clearSquare(this.pos);
         this.pos = newPos;
         this.board.moved = true;
-      }else if(!this.merged && this.match(this.board.grid[newPos[0]][newPos[1]])){
+      }else if(!this.merged && this.match(this.board.grid[newPos[0]][newPos[1]]) && !this.board.grid[newPos[0]][newPos[1]].merged ){
         var match = this.board.grid[newPos[0]][newPos[1]];
         this.mergeInto(match);
         this.board.moved = true;
