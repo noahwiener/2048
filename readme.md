@@ -29,4 +29,4 @@ In order to render tiles sliding across the board, each tile is given its own CS
 
 ## Check it out!
 
-<img src="https://i.gyazo.com/2dec25cb5ae3544d3a9a7e2676459cd5.gif" height="200" alt="gameplay-gif">
+<img src="https://i.gyazo.com/2dec25cb5ae3544d3a9a7e2676459cd5.gif" height="400" alt="gameplay-gif">
