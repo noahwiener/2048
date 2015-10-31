@@ -74,7 +74,6 @@
           this.lose = false;
           return;
         }else if (this.grid[i][j].canBeMoved()){
-          debugger;
           this.lose = false;
           return;
         }

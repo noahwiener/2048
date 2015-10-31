@@ -1,39 +1,86 @@
-h1 {
-  text-align: center;
+body {
+  background-color: #eee4da;
 }
+
+.above-board {
+  text-align: center;
+  width: 500px;
+  margin: auto;
+  color: rgb(119, 110, 101);
+  display: block;
+  font-size: 18px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+h1 {
+  color: #776e65;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 80px;
+  font-weight: bold;
+  float: left;
+  margin: 0;
+}
+
+.score {
+  color: #776e65;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  height: 50px;
+  line-height: 50px;
+  margin-top: 10px;
+  float: right;
+}
+
+button {
+  color: #f9f6f2;
+  background-color: #f67c5f;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0px;
+  cursor: pointer;
+  float: right;
+}
+
 
 figure {
   left: 50%;
   transform: translateX(-50%);
   position: relative;
   display: inline-block;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
 }
 
-.score-new {
-  position: relative;
-  display: block;
-  width: 600px;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
 .board {
   width: 500px;
   height: 500px;
+  background-color: #776e65;
+  border-radius: 10%;
 }
 
 .grid-square {
   height: 125px;
   width: 125px;
   float: left;
-  border: 1px solid black;
+  border: 10px solid #776e65;
+  background-color: #eee4da;
   box-sizing: border-box;
+  border-radius: 10%;
 }
 
 .tile {
-  height: 123px;
-  width: 123px;
-  margin: 1px;
+  height: 105px;
+  width: 105px;
+  margin: 10px;
   color: red;
   float: left;
   position: absolute;
