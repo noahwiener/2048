@@ -40,6 +40,7 @@
   };
 
   Game.prototype.handleKeyPress = function (event) {
+    event.preventDefault();
     if (Game.KEYS[event.keyCode]) {
       var direction = Game.KEYS[event.keyCode];
       this.update(direction);
