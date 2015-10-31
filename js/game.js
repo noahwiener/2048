@@ -97,13 +97,13 @@
 
 
   Game.prototype.win = function(){
-    var modal = ("<div class='modal-text'><p>Congratulations, you win! Want to play again?</p><div class='modal-button'><button>New Game</button></div></div></div>");
+    var modal = ("<div class='modal-text'><p>Congratulations, you win! Want to play again?</p><div class='modal-button'><button>Play Again</button></div></div></div>");
     $(".modal").html(modal);
     $(".modal-button").on("click", this.newGame.bind(this));
   };
 
   Game.prototype.lose = function(){
-    var modal = ("<div class='modal-text'><p>Game over.  Your score was " + this.board.score + ". Want to play again?</p><div class='modal-button'><button>New Game</button></div></div></div>");
+    var modal = ("<div class='modal-text'><p>Game over.  Your score was " + this.board.score + ". Want to play again?</p><div class='modal-button'><button>Play Again</button></div></div></div>");
     $(".modal").html(modal);
     $(".modal-button").on("click", this.newGame.bind(this));
   };
