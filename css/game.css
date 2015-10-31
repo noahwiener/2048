@@ -13,6 +13,17 @@ body {
   padding-top: 20px;
 }
 
+.below-board {
+  text-align: center;
+  width: 500px;
+  margin: auto;
+  color: rgb(119, 110, 101);
+  display: block;
+  font-size: 18px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
 h1 {
   color: #776e65;
   font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -47,6 +58,28 @@ button {
   padding-top: 0px;
   cursor: pointer;
   float: right;
+  transform: translateY(20%);
+}
+
+.modal-text {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  color: #f9f6f2;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  z-index: 1000;
+  width: 500px;
+  height: 200px;
+  opacity: 0.9;
+  background-color: #776e65;
+  border-radius: 10%;
+}
+
+.modal-button button{
+  float: none;
 }
 
 

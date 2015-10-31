@@ -14,7 +14,6 @@
     $el.on("swipeUp", this.handleSwipeUp.bind(this));
     $el.on("swipeDown", this.handleSwipeDown.bind(this));
     $(".new-game").on("click", this.newGame.bind(this));
-
   };
 
   Game.prototype.handleSwipeLeft = function (event){
@@ -55,13 +54,12 @@
       this.board.moved = false;
       this.board.checkOver();
       if (this.board.won){
-        alert("you win");
+        this.win();
       }else if (this.board.lose){
-        alert("you lose");
+        this.lose();
       }
     }
   };
-
 
   Game.prototype.setupGrid = function() {
     var html = $("<div class='board'></div>");
@@ -90,8 +88,24 @@
     $(".tile").remove();
     this.board.score = 0;
     this.setScore();
+    var modal = ("");
+    $(".modal").html(modal);
     this.board = new JSGame.Board();
     this.setupGrid();
+  };
+
+
+
+  Game.prototype.win = function(){
+    var modal = ("<div class='modal-text'><p>Congratulations, you win! Want to play again?</p><div class='modal-button'><button>New Game</button></div></div></div>");
+    $(".modal").html(modal);
+    $(".modal-button").on("click", this.newGame.bind(this));
+  };
+
+  Game.prototype.lose = function(){
+    var modal = ("<div class='modal-text'><p>Game over.  Your score was " + this.board.score + ". Want to play again?</p><div class='modal-button'><button>New Game</button></div></div></div>");
+    $(".modal").html(modal);
+    $(".modal-button").on("click", this.newGame.bind(this));
   };
 
 
