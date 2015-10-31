@@ -13,6 +13,7 @@
     $el.on("swipeRight", this.handleSwipeRight.bind(this));
     $el.on("swipeUp", this.handleSwipeUp.bind(this));
     $el.on("swipeDown", this.handleSwipeDown.bind(this));
+    $(".new-game").on("click", this.newGame.bind(this));
 
   };
 
@@ -80,6 +81,15 @@
 
   Game.prototype.setScore = function(){
     $(".score").html("Score:" + " " + this.board.score);
+  };
+
+  Game.prototype.newGame = function(event){
+    event.preventDefault();
+    $(".tile").remove();
+    this.board.score = 0;
+    this.setScore();
+    this.board = new JSGame.Board();
+    this.setupGrid();
   };
 
 
