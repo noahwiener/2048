@@ -1,6 +1,6 @@
 # 2048
 
-[Live link][live]
+[Click here to play!][live]
 
 [live]: http://noahwiener.github.io/2048/
 
@@ -19,7 +19,7 @@ This game was created by [Noah Wiener][profile] using Javascript, jQuery, HTML, 
 
 ### Mobile Friendly
 
-I play 2048 all the time, but rarely on the computer. It is a great game to play on BART, while waiting in line, or whenever you have a few minutes to spare!  As a result, I decided to create a mobile-friendly version that you can play right in your phone or tablet's browser. Swipe gesture functionality added with jQuery, using [Matt Bryson's jQuery TouchSwipe plugin][plugin].
+I play 2048 all the time, but rarely on the computer. It is a great game to play on BART, while waiting in line, or whenever you have a few minutes to spare!  As a result, I decided to create a mobile-friendly version that you can play right on your phone or tablet's browser. Swipe gesture functionality added with jQuery, using [Matt Bryson's jQuery TouchSwipe plugin][plugin].
 
 [plugin]: https://github.com/mattbryson/TouchSwipe-Jquery-Plugin
 
