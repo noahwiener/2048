@@ -10,7 +10,7 @@
     this.score = 0;
     this.moved = false;
     this.won = false;
-    this.lost = false;
+    this.lose = false;
   };
 
   Board.prototype.placeRandomTile = function(){
@@ -64,6 +64,22 @@
       random = this.randomPos();
     }
     return random;
+  };
+
+  Board.prototype.checkOver = function(){
+    this.lose = true;
+    for (var i = 0; i < 4; i++) {
+      for (var j = 0; j < 4; j++) {
+        if (this.isEmptySquare([i, j])){
+          this.lose = false;
+          return;
+        }else if (this.grid[i][j].canBeMoved()){
+          debugger;
+          this.lose = false;
+          return;
+        }
+      }
+    }
   };
 
   Board.prototype.addTile = function(pos, tile){

@@ -48,16 +48,18 @@
   };
 
   Game.prototype.update = function (direction){
-      this.board.handleInput(direction);
-      if (this.board.moved){
-        this.board.placeRandomTile();
-        this.setScore();
-        this.board.moved = false;
-        if (this.board.over){
-          alert("you win");
-          this.board.won = false;
-        }
+    this.board.handleInput(direction);
+    if (this.board.moved){
+      this.board.placeRandomTile();
+      this.setScore();
+      this.board.moved = false;
+      this.board.checkOver();
+      if (this.board.won){
+        alert("you win");
+      }else if (this.board.lose){
+        alert("you lose");
       }
+    }
   };
 
 

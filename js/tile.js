@@ -62,21 +62,24 @@
   };
 
 
-  Tile.prototype.canBeMerged = function(){
+  Tile.prototype.canBeMoved = function(){
     var directions = [
       [0, -1],
       [0, 1],
       [-1, 0],
       [1, 0]
     ];
-
     var testSquare;
+    var pos;
     for (var i = 0; i < directions.length; i++) {
-      testSquare = this.board.grid(this.addDirection(directions[i]));
-      if (this.match(testSquare)){
-        return true;
+      pos = this.addDirection(directions[i]);
+      if (this.board.isOnBoard(pos)){
+        testSquare = this.board.grid[pos[0]][pos[1]];
+        if (this.board.isEmptySquare(pos) || this.match(testSquare)){
+          return true;
+        }
       }
-    }
+      }
     return false;
   };
 
