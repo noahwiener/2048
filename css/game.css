@@ -127,6 +127,12 @@ figure {
   transition: all 0.1s linear;
 }
 
+.foot-text {
+  font-size: 14px;
+  line-height: 14px;
+  font-family: sans-serif;
+}
+
 .value_1, .value_1:after {
   color: #776e65;
   background-color: red;
