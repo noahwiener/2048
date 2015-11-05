@@ -8,6 +8,8 @@
 
 How to play: Use your keyboard's arrow keys or your phone/tablet's swipe gestures to slide all of the tiles up, down, left, or right.  If two tiles with the same number collide, they combine and double in value! Keep moving and matching tiles until you hit 2048!
 
+<img src="https://i.gyazo.com/2dec25cb5ae3544d3a9a7e2676459cd5.gif" height="400" alt="gameplay-gif">
+
 
 This game was created by [Noah Wiener][profile] using Javascript, jQuery, HTML, and CSS, featuring [Matt Bryson's jQuery TouchSwipe plugin][plugin] for mobile support. [Check out some of Noah's other work here][profile].  This page is an adaptation of [Gabriele Cirulli][original]'s original 2048 game.
 
@@ -26,7 +28,3 @@ I play 2048 all the time, but rarely on the computer. It is a great game to play
 ### Visual Effects
 
 In order to render tiles sliding across the board, each tile is given its own CSS class and is rendered as an individual DOM element.
-
-## Demo
-
-<img src="https://i.gyazo.com/2dec25cb5ae3544d3a9a7e2676459cd5.gif" height="400" alt="gameplay-gif">
