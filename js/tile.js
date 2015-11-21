@@ -9,6 +9,7 @@
     this.pos = pos || board.findEmpty();
     this.value = value || this.assignStartingValue();
     this.merged = false;
+    this.new = true;
   };
 
   Tile.prototype.assignStartingValue = function(){
@@ -40,6 +41,7 @@
       }
       newPos = [newPos[0] + direction[0], newPos[1] + direction[1]];
     }
+    this.new = false;
     this.resetKlass();
     this.board.addTile(this.pos, this);
     this.merged = false;
@@ -96,8 +98,9 @@
     klass += " value_" + this.value;
     if (this.merged){
       klass += " merged";
+    }else if (this.new){
+      klass += " new"
     }
-    this.merged = false;
     return klass;
   };
 

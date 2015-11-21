@@ -290,11 +290,35 @@ figure {
  top: 375px;
 }
 
-.merged, .merged:before{
-  color: #AD310B;
-  -webkit-transition: background-color 300ms linear;
-  -moz-transition: background-color 300ms linear;
-  -o-transition: background-color 300ms linear;
-  -ms-transition: background-color 300ms linear;
-  transition: background-color 300ms linear;
+.merged, .merged:before, .new, .new:after{
+  -webkit-animation: fadein 0.4s;
+     -moz-animation: fadein 0.4s;
+      -ms-animation: fadein 0.4s;
+       -o-animation: fadein 0.4s;
+          animation: fadein 0.4s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
