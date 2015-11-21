@@ -94,6 +94,10 @@
   Tile.prototype.klass = function(){
     var klass = "tile tile_" + this.pos[0] + this.pos[1];
     klass += " value_" + this.value;
+    if (this.merged){
+      klass += " merged";
+    }
+    this.merged = false;
     return klass;
   };
 
